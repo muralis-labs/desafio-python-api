@@ -1,0 +1,4 @@
+Flask==2.1.0
+setuptools==62.6.0
+python-dotenv==0.17.1
+gunicorn==19.10.0
