@@ -79,3 +79,9 @@ Independente do Setup escolhido confirme se o projeto está em execução acessa
 ### Organização do Projeto
 
 Os principais diretórios do projeto são `api/` e `data/`, o primeiro é onde devem estar os arquivos com sua solução, atualmente ele possui apenas o código responsável por criar a aplicação Flask e definir uma rota de _Status_. Você pode adicionar quaisquer outros arquivos que achar necessário para melhor organizar sua solução. A pasta `data/` é onde está o banco de dados (SQLite) com as tabelas para o projeto já criadas.
+
+### Modelo de Dados
+
+O banco de dados foi criado com base no seguinte diagrama:
+
+![Modelo de Dados](/data/modelo-er.png "modelo ER")
