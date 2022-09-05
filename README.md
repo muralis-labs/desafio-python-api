@@ -46,7 +46,7 @@ Neste repositório está a base inicial do desafio, uma aplicação Flask pronta
 No diretório raiz do projeto execute:
 
 ```sh
-> docker-compose up
+docker-compose up
 ```
 Após a finalização do comando o _container_ com projeto em execução estará pronto para o uso.
 
