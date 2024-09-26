@@ -22,20 +22,69 @@ A API deverá disponibilizar um _endpoint_ que permita o cadastro e exibição d
 | GET        | /api/despesas  | Listar despesas   |
 | POST       | /api/despesas  | Cadastrar despesa |
 
+### Request body
+
+O JSON enviado para cadastrar uma despesa deve possuir o seguinte formato:
+
+```json
+{
+    "valor": float,
+    "descricao": string,
+    "dataCompra": string,
+    "tipoPagamento": int,
+    "categoria": int
+}
+```
+
 ### Response body
 
 Independente da função executada (listagem ou cadastro) o JSON de retorno deve possuir o seguinte formato:
 
 ```json
 {
-    "data": null,
+    "data": ,
+    "success": 
+}
+```
+
+O valor do atributo `data` deve ser o resultado da request executada. Para a função "Listar" deve conter a lista de despesas do mês atual cadastradas no banco de dados. Para a função "Cadastrar" deve conter o ID da despesa recém inserida no banco de dados.
+
+O atributo `success` será um booleano indicando o êxito, ou não, da função executada.
+
+#### Exemplo de response GET /api/despesas
+
+```json
+{
+    "data": [
+        {
+            "id": 1,
+            "categoria": "alimentação",
+            "dataCompra": "2022-09-05",
+            "descricao": "lorem ipsum",
+            "tipoPagamento": "pix",
+            "valor": 89.9
+        },
+        {
+            "id": 2,
+            "categoria": "alimentação",
+            "dataCompra": "2022-09-05",
+            "descricao": "lorem ipsum",
+            "tipoPagamento": "pix",
+            "valor": 42.0
+        }
+    ],
     "success": true
 }
 ```
 
-O valor do atributo `data` deve ser o resultado da request executada. Para a função "Listar" deve conter a lista de despesas cadastradas no banco de dados. Para a função "Cadastrar" deve conter o ID da despesa recém inserida no banco de dados.
+#### Exemplo de response POST /api/despesas
 
-O atributo `success` será um booleano indicando o êxito, ou não, da função executada.
+```json
+{
+    "data": 1,
+    "success": true
+}
+```
 
 ## Estrutura inicial
 
@@ -78,7 +127,9 @@ Independente do Setup escolhido confirme se o projeto está em execução acessa
 
 ### Organização do Projeto
 
-Os principais diretórios do projeto são `api/` e `data/`, o primeiro é onde devem estar os arquivos com sua solução, atualmente ele possui apenas o código responsável por criar a aplicação Flask e definir uma rota de _Status_. Você pode adicionar quaisquer outros arquivos que achar necessário para melhor organizar sua solução. A pasta `data/` é onde está o banco de dados (SQLite) com as tabelas para o projeto já criadas.
+Os principais diretórios do projeto são `api/` e `data/`, o primeiro é onde devem estar os arquivos com sua solução, atualmente ele possui apenas o código responsável por criar a aplicação Flask e definir uma rota de _Status_. Você pode adicionar quaisquer outros arquivos que achar necessário para melhor organizar sua solução. 
+
+A pasta `data/` é onde está o banco de dados SQLite (`data/database.db`). A estrutura do banco está pronta com as tabelas para o projeto já criadas, com dados de **categorias** e **tipos_pagamento** já preenchidos. Os demais arquivos do diretório não devem ser alterados.
 
 ### Modelo de Dados
 
